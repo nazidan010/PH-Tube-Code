@@ -1,0 +1,20 @@
+.graphic-spinner {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: conic-gradient(#cf4b4b 25%, transparent 0 50%, #140d01 0 75%, transparent 0);
+  animation: rotate 1.5s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

@@ -37,12 +37,15 @@
         </nav>
     </header>
     <!-- Button Nav -->
-    <nav id="categories" class=" p-5 flex justify-center gap-2"></nav>
+    <nav id="categories" class=" p-5 flex justify-center gap-2"><button class="btn bg-red-400">All</button></nav>
     <main>
         <!-- Card Section -->
         <section id="videos" class="w-11/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto py-10 gap-5"></section>
+        <!-- Loading spinner -->
+        <div id="spinner" class="graphic-spinner" style="display:none;"></div>
     </main>
     <script src="./scripts/category.js"></script>
     <script src="./scripts/video.js"></script>
+    <!-- <script src="./scripts/loading.js"></script> -->
 </body>
 </html>

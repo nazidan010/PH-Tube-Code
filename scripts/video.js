@@ -5,6 +5,17 @@ const loadVideos = () => {
     .then((data) => displayVideos(data.videos))
     .catch((error) => console.log(error));
 }
+// Time set start
+function getTime(time){
+    const hour=parseInt (time/3600);
+    const remainingSecond= time%3600;
+    const minute=parseInt(remainingSecond/60);
+    Second=remainingSecond%60;
+    return`${hour}hour ${minute}minute ${Second}second ago`
+}
+console.log(getTime(7865));
+// Time set End
+
 //create load videos end
 
 // {
@@ -34,8 +45,11 @@ const displayVideos = (videos) => {
         const card = document.createElement("div");
         card.classList = 'card card-compact';
         card.innerHTML = `
-        <figure class="h-[250px]">
+        <figure class="h-[250px] relative">
             <img class="h-full w-full object-cover rounded-md" src=${item.thumbnail} alt="">
+            ${
+                item.others.posted_date?.length==0?"":`<p class="absolute bg-black rounded-sm text-white p-2 right-2 bottom-2">${getTime(item.others.posted_date)}</p>`
+            }
         </figure>
         <div class="px-0 py-2 flex gap-3">
             <div>
@@ -43,9 +57,11 @@ const displayVideos = (videos) => {
             </div>
             <div>
             <div class="flex gap-2">
-            <h2 class="font-bold text-red-400">${item.authors[0].profile_name}</h2>
-            <img class="h-6 w-6" src="https://img.icons8.com/?size=96&id=98A4yZTt9abw&format=png" alt="">
+            <h2 class="font-bold text-red-400">${item.authors[0].profile_name}</h2> 
+            ${item.authors[0].verified==true?'<img class="h-6 w-6" src="https://img.icons8.com/?size=96&id=98A4yZTt9abw&format=png" alt="">'
+                :""}
             </div>
+            
             <p>${item.title}</p>
             <p>${item.others.views} Views</p>
             </div>
@@ -54,6 +70,6 @@ const displayVideos = (videos) => {
         videosContainer.appendChild(card);
     });
 }
-
+// setTimeout(loadVideos,3000)
 //create displayVideos end
 loadVideos(); 
