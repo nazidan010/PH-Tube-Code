@@ -70,6 +70,6 @@ const displayVideos = (videos) => {
         videosContainer.appendChild(card);
     });
 }
-// setTimeout(loadVideos,3000)
+setTimeout(loadVideos,3000)
 //create displayVideos end
-loadVideos(); 
+// loadVideos(); 
