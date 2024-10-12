@@ -11,7 +11,7 @@ function getTime(time){
     const remainingSecond= time%3600;
     const minute=parseInt(remainingSecond/60);
     Second=remainingSecond%60;
-    return`${hour}hour ${minute}minute ${Second}second ago`
+    return`${hour}h ${minute}min ${Second}second ago`
 }
 // console.log(getTime(7865));
 // Time set End
@@ -41,6 +41,21 @@ function getTime(time){
 const displayVideos = (videos) => {
     const videosContainer = document.getElementById('videos');
     videosContainer.innerHTML="";
+    if(videos.length==0){
+        videosContainer.classList.remove("grid");
+        videosContainer.innerHTML=`
+        <div class="min-h-[300px] flex flex-col gap-5 justify-center items-center">
+                      <img
+                        src="./assets/Icon.png"
+                        alt="" />
+
+                        <h2 class="font-extrabold text-3xl p-8">Oops!! Sorry, There is no content here</h2>
+        </div>
+        `
+    }
+    else{
+        videosContainer.classList.add("grid");
+    }
     videos.forEach((item) => {
         // console.log(item);
         const card = document.createElement("div");
@@ -71,8 +86,8 @@ const displayVideos = (videos) => {
         videosContainer.appendChild(card);
     });
 }
-setTimeout(loadVideos,2000)
+// setTimeout(loadVideos,2000)
 
 //create displayVideos end
 
-// loadVideos(); 
+loadVideos(); 

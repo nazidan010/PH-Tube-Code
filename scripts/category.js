@@ -22,7 +22,7 @@ const displayCategories = (categories) => {
         //Create a button
         const buttonContainer=document.createElement('div');
         buttonContainer.innerHTML=`
-        <button onclick="loadCategoriesVideos(${item.category_id})" class="btn bg-red-400">
+        <button onclick="loadCategoriesVideos(${item.category_id})" class="btn">
         ${item.category}
         </button>
         `
