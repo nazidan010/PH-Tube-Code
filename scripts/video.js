@@ -5,6 +5,7 @@ const loadVideos = () => {
     .then((data) => displayVideos(data.videos))
     .catch((error) => console.log(error));
 }
+//create load videos end
 // Time set start
 function getTime(time){
     const hour=parseInt (time/3600);
@@ -16,7 +17,25 @@ function getTime(time){
 // console.log(getTime(7865));
 // Time set End
 
-//create load videos end
+//details button with modal start
+const loadDetails=async (videoId)=>{
+    // console.log(videoId);
+    const uri=`https://openapi.programming-hero.com/api/phero-tube/video/${videoId}`;
+    const res=await fetch(uri);
+    const data=await res.json();
+    console.log(data);
+}
+const displayDetails=(video)=>{
+    console.log(video);
+    const detailContainer=document.getElementById("modal-content");
+    //way-1
+    // document.getElementById("showModalData").click();
+    //way-2
+    document.getElementById("customModal").showModal();
+};
+
+
+//details button with modal end
 
 // {
 //     "category_id": "1001",
@@ -80,6 +99,7 @@ const displayVideos = (videos) => {
             
             <p>${item.title}</p>
             <p>${item.others.views} Views</p>
+            <button onclick="loadDetails('${item.video_id}')" class="btn btn-sm mt-2 btn-error">details</button>
             </div>
         </div>
         `;
